@@ -22,13 +22,15 @@ on:
                 default: ghcr.io
                 type: string
 
-env:
-    FULL_IMAGE_NAME: ${{ inputs.registry }}/${{ inputs.image_name }}
-
 jobs:
     merge-images:
         runs-on: ubuntu-latest
         steps:
+            - name: Prepare
+              run: |
+                  # Lowercase the image name for OCI compatibility
+                  echo "FULL_IMAGE_NAME=${{ inputs.registry }}/${{ inputs.image_name }}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
+
             - name: Download digests
               uses: actions/download-artifact@v4
               with:
