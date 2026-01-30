@@ -1,6 +1,7 @@
 fastapi==0.111.0
 uvicorn[standard]==0.22.0
-pydantic==2.7.1
+pydantic>=2.7.4
+typing_extensions>=4.12
 python-multipart==0.0.9
 python-socketio
 grpcio
@@ -65,3 +66,9 @@ beautifulsoup4
 # Llama Index for RAG
 llama-index
 llama-index-llms-ollama
+
+# LangChain for agent pipelines
+langchain
+langchain-openai
+langgraph
+langchain_community
