@@ -29,7 +29,8 @@ jobs:
             - name: Prepare
               run: |
                   # Lowercase the image name for OCI compatibility
-                  echo "FULL_IMAGE_NAME=${{ inputs.registry }}/${{ inputs.image_name }}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
+                  IMAGE_NAME=$(echo "${{ inputs.registry }}/${{ inputs.image_name }}" | tr '[:upper:]' '[:lower:]')
+                  echo "FULL_IMAGE_NAME=$IMAGE_NAME" >> $GITHUB_ENV
 
             - name: Download digests
               uses: actions/download-artifact@v4

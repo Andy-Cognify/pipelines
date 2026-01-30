@@ -45,7 +45,8 @@ jobs:
                   platform=${{ matrix.platform }}
                   echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
                   # Lowercase the image name for OCI compatibility
-                  echo "FULL_IMAGE_NAME=${{ inputs.registry }}/${{ inputs.image_name }}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
+                  IMAGE_NAME=$(echo "${{ inputs.registry }}/${{ inputs.image_name }}" | tr '[:upper:]' '[:lower:]')
+                  echo "FULL_IMAGE_NAME=$IMAGE_NAME" >> $GITHUB_ENV
 
             - name: Checkout repository
               uses: actions/checkout@v4
